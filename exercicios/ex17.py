@@ -1,4 +1,12 @@
+class Tabuada():
+    def __init__(self):
+        self.tabuada = tabuada
+    def conta(self):
+        for numero in range(1, 11):
+            print(f'{tabuada} x {numero} = {tabuada*numero}')
+
 tabuada = int(input('Digite um número inteiro: '))
 
-for numero in range(1, 11):
-    print(f'{tabuada} x {numero} = {tabuada*numero}')
+rodar = Tabuada()
+
+rodar.conta()
