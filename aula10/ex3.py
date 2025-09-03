@@ -6,7 +6,7 @@ class Acessos():
         set_sucessos = set()
         set_falhas = set()
 
-        for nome, status in acessos:
+        for nome, status in self.acessos:
             if status == 'sucesso':
                 set_sucessos.add(nome)
             if status == 'falha' and nome not in set_sucessos:
