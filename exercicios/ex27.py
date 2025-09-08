@@ -1,4 +1,4 @@
-'''Exercício 5: Maior de Dois Números
+'''Maior de Dois Números
 ● Peça ao usuário para digitar dois números inteiros.
 ● Use if-else para descobrir qual dos dois é o maior e imprima o resultado.
 '''

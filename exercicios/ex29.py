@@ -1,4 +1,4 @@
-'''Exercício 7: Classificador de Idade
+'''Classificador de Idade
 ● Peça a idade de uma pessoa.
 ● Use if-elif-else para classificar a idade em:
 ○ "Criança" (0 a 12 anos)

@@ -1,4 +1,4 @@
-'''Exercício 9: Categoria de CNH
+'''Categoria de CNH
 ● Peça a idade e se o usuário tem CNH (True ou False).
 ● Use if-elif-else com operadores lógicos (and e or) para:
 ○ Se for maior de 18 e tiver CNH: "Pode dirigir."

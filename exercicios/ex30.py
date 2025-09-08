@@ -1,4 +1,4 @@
-'''Exercício 8: Avaliador de Notas
+'''Avaliador de Notas
 ● Peça a nota de um aluno (float).
 ● Use if-elif-else para atribuir um conceito:
 ○ = 9.0: Conceito A
