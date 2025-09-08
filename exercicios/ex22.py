@@ -4,10 +4,20 @@ preço.
 ● Use o operador de multiplicação (*) e subtração (-).
 '''
 
+class Preco():
+    def __init__(self, preco):
+        self.preco = preco
+
+    def desconto(self):
+        if preco > 100:
+            desconto = preco - (preco * 0.10)
+            print(f'O preço com desconto ficou R${desconto}')
+        else:
+            print('Preço sem desconto')
+
 preco = float(input('Digite o preço do produto: '))
-if preco > 100:
-    desconto = preco - (preco * 0.10)
-    print(f'O preço com desconto ficou R${desconto}')
-else:
-    print('Preço sem desconto')
+
+rodar = Preco(preco)
+
+rodar.desconto()
 

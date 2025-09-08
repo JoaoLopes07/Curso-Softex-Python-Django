@@ -3,7 +3,17 @@
 ● Se for, imprima "O número é positivo!".
 '''
 
+class Numero():
+    def __init__(self, numero):
+        self.numero = numero
+
+    def condicao(self):
+        if self.numero > 0:
+            print('Número Positivo')
+            
+            
 numero = int(input('Digite um número inteiro: '))
 
-if numero >0:
-    print('Número Positivo')
+rodar = Numero(numero)
+
+rodar.condicao()
