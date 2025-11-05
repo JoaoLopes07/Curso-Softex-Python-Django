@@ -2,8 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("<h1>Olá, Mundo! Esta é minha primeira página Django!</h1>")
+   context = {
+       'nome_usuario': 'João',
+       'tecnologias': {'Python', 'Django', 'HTML', 'CSS'}
+   }
+   #return HttpResponse("<h1>Olá, Mundo! Esta é minha primeira página Django!</h1>")
+   return render(request, 'home.html', context)
 
-def home2(request):
-    return HttpResponse("<h1>Meu primeiro código em Django</h1>")
+def login(request):
+    return HttpResponse("<input>Login</input>")
+
+
 
