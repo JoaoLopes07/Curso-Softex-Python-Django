@@ -2,7 +2,14 @@
 {% block title %} Página Inicial - Meu Site {%endblock %}
 {% block content %}
 <h1>Olá, {{ nome_usuario }}!</h1>
-<p>Este HTML está separado do meu código Python.</p>
+<hr>
+<h3>Nova Tarefa:</h3>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Adicionar Tarefa</button>
+</form>
+<hr>
 <h3>Tecnologias que estou aprendendo:</h3>
 <ul>
   {% for tec in tecnologias %}
@@ -10,7 +17,6 @@
   {% endfor %}
 </ul>
 {% if nome_usuario == 'João' %}
-<p>Este é um conteúdo especial para o João!</p>
 {% endif %}
 
 <hr />
