@@ -1,16 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class Tarefa(models.Model):
 
     PRIORIDADE_CHOICES = [
-    ('baixa', 'Baixa'),
-    ('media', 'Média'),
-    ('alta', 'Alta'),
-]
+        ('baixa', 'Baixa'),
+        ('media', 'Média'),
+        ('alta', 'Alta'),
+    ]
 
     prioridade = models.CharField(
         max_length=10,
@@ -19,16 +17,15 @@ class Tarefa(models.Model):
         verbose_name='Prioridade'
     )
 
-    
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name='tarefas',  # Permite user.tarefas.all()
+        related_name='tarefas',
         verbose_name='Usuário'
     )
-    # CharField: Campo de texto com limite
+
     titulo = models.CharField(
         max_length=200,
         verbose_name='Título'
@@ -49,7 +46,7 @@ class Tarefa(models.Model):
         blank=True,
         verbose_name='Prazo'
     )
-    
+
     data_conclusao = models.DateField(
         null=True,
         blank=True,
@@ -59,7 +56,7 @@ class Tarefa(models.Model):
     class Meta:
         verbose_name = 'Tarefa'
         verbose_name_plural = 'Tarefas'
-        ordering = ['-criada_em']  # Mais recentes primeiro
+        ordering = ['-criada_em']
 
-        def __str__(self):
-            return f"{self.titulo} ({'✓' if self.concluida else '✗'})"
+    def __str__(self):
+        return f"{self.titulo} ({'✓' if self.concluida else '✗'})"
