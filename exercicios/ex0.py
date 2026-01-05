@@ -1,4 +1,4 @@
-'''nome = 'João'
+"""nome = 'João'
 print(nome)
 
 nome = input('Digite seu nome: ')
@@ -31,13 +31,13 @@ resto_divisao = numero % 2
 print(f'{numero} % 2 = {resto_divisao}')
 
 potencia = numero ** 2
-print(f'{numero} ** 2 = {potencia}')'''
+print(f'{numero} ** 2 = {potencia}')"""
 
-email = str(input('Digite o seu Email: '))
-senha = str(input('Digite a sua Senha: '))
-senha_confirme = str(input('Confirme a sua Senha: '))
+email = str(input("Digite o seu Email: "))
+senha = str(input("Digite a sua Senha: "))
+senha_confirme = str(input("Confirme a sua Senha: "))
 
 if senha == senha_confirme:
     True
 else:
-    print('Senha Incorreta')
+    print("Senha Incorreta")

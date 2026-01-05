@@ -44,7 +44,7 @@ class TarefasEstatisticasAPIView(APIView):
             "total": total,
             "concluidas": concluidas,
             "pendentes": pendentes,
-            "taxa_conclusao": round(taxa_conclusao, 2)
+            "taxa_conclusao": round(taxa_conclusao, 2),
         }
 
         return Response(dados, status=status.HTTP_200_OK)
@@ -59,10 +59,10 @@ class DetalheTarefaAPIView(RetrieveUpdateDestroyAPIView):
         return Tarefa.objects.filter(user=self.request.user)
 
     def get_permissions(self):
-        if self.request.method == 'DELETE':
+        if self.request.method == "DELETE":
             return [IsAuthenticated(), PodeDeletarTarefa()]
 
-        if self.request.method == 'PUT':
+        if self.request.method == "PUT":
             return [IsAuthenticated(), PodeEditarTarefa()]
 
         return [IsAuthenticated()]
@@ -75,7 +75,7 @@ class DuplicarTarefaAPIView(APIView):
         nova_tarefa = Tarefa.objects.create(
             titulo=tarefa_original.titulo + " (cópia)",
             concluida=False,
-            data_conclusao=None
+            data_conclusao=None,
         )
 
         serializer = TarefaSerializer(nova_tarefa)
@@ -93,7 +93,7 @@ class ConcluirTodasTarefasAPIView(APIView):
 
         return Response(
             {"mensagem": "Todas as tarefas foram concluídas."},
-            status=status.HTTP_200_OK
+            status=status.HTTP_200_OK,
         )
 
 
@@ -110,9 +110,9 @@ class MinhaView(APIView):
                 "username": user.username,
                 "email": user.email,
                 "is_staff": user.is_staff,
-                "date_joined": user.date_joined
+                "date_joined": user.date_joined,
             },
-            status=status.HTTP_200_OK
+            status=status.HTTP_200_OK,
         )
 
 
@@ -130,8 +130,7 @@ class LogoutView(APIView):
             )
         except Exception:
             return Response(
-                {"detail": "Token inválido."},
-                status=status.HTTP_400_BAD_REQUEST
+                {"detail": "Token inválido."}, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -147,21 +146,19 @@ class ChangePasswordView(APIView):
         if not old_password or not new_password:
             return Response(
                 {"error": "Informe a senha atual e a nova senha."},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         if not user.check_password(old_password):
             return Response(
-                {"error": "Senha atual incorreta."},
-                status=status.HTTP_400_BAD_REQUEST
+                {"error": "Senha atual incorreta."}, status=status.HTTP_400_BAD_REQUEST
             )
 
         user.set_password(new_password)
         user.save()
 
         return Response(
-            {"detail": "Senha alterada com sucesso."},
-            status=status.HTTP_200_OK
+            {"detail": "Senha alterada com sucesso."}, status=status.HTTP_200_OK
         )
 
 
@@ -170,6 +167,7 @@ class RegisterView(generics.CreateAPIView):
     Endpoint para cadastro de novos usuários.
     Acesso: Público (Qualquer um pode criar conta).
     """
+
     queryset = User.objects.all()
     permission_classes = [AllowAny]  # Sobrescreve o padrão global
     serializer_class = UserRegistrationSerializer

@@ -15,18 +15,40 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tarefa',
+            name="Tarefa",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200, verbose_name='Título')),
-                ('concluida', models.BooleanField(default=False, verbose_name='Concluída')),
-                ('criada_em', models.DateTimeField(auto_now_add=True, verbose_name='Criada em')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tarefas', to=settings.AUTH_USER_MODEL, verbose_name='Usuário')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200, verbose_name="Título")),
+                (
+                    "concluida",
+                    models.BooleanField(default=False, verbose_name="Concluída"),
+                ),
+                (
+                    "criada_em",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Criada em"),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tarefas",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Usuário",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tarefa',
-                'verbose_name_plural': 'Tarefas',
-                'ordering': ['-criada_em'],
+                "verbose_name": "Tarefa",
+                "verbose_name_plural": "Tarefas",
+                "ordering": ["-criada_em"],
             },
         ),
     ]

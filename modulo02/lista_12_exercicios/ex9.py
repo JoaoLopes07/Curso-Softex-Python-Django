@@ -1,4 +1,4 @@
-class Filme():
+class Filme:
     def __init__(self, titulo, diretor, ano):
         self.titulo = titulo
         self.diretor = diretor

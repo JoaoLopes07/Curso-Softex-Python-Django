@@ -8,24 +8,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tarefa',
-            name='prazo',
-            field=models.DateField(blank=True, null=True, verbose_name='Prazo'),
+            model_name="tarefa",
+            name="prazo",
+            field=models.DateField(blank=True, null=True, verbose_name="Prazo"),
         ),
         migrations.AddField(
-            model_name='tarefa',
-            name='prioridade',
-            field=models.CharField(choices=[('baixa', 'Baixa'), ('media', 'Média'), ('alta', 'Alta')], default='media', max_length=10, verbose_name='Prioridade'),
+            model_name="tarefa",
+            name="prioridade",
+            field=models.CharField(
+                choices=[("baixa", "Baixa"), ("media", "Média"), ("alta", "Alta")],
+                default="media",
+                max_length=10,
+                verbose_name="Prioridade",
+            ),
         ),
         migrations.AlterField(
-            model_name='tarefa',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='tarefas', to=settings.AUTH_USER_MODEL, verbose_name='Usuário'),
+            model_name="tarefa",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="tarefas",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Usuário",
+            ),
         ),
     ]

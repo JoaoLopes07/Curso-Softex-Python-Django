@@ -3,8 +3,7 @@ import time
 
 def batalha(heroi, monstro):
     while heroi.esta_vivo() and monstro.esta_vivo():
-        print(f"\nVida do Herói: {heroi.vida} | "
-              f"Vida do Monstro: {monstro.vida}")
+        print(f"\nVida do Herói: {heroi.vida} | " f"Vida do Monstro: {monstro.vida}")
 
         print("\nEscolha sua ação:")
         print("1) Atacar")

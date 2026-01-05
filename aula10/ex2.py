@@ -1,4 +1,4 @@
-class Estoque():
+class Estoque:
     def __init__(self, estoque_principal, estoque_online):
         self.estoque_principal = estoque_principal
         self.estoque_online = estoque_online
@@ -19,12 +19,14 @@ class Estoque():
         for produto2, valor2 in self.estoque_online:
             if (produto2, valor2) not in self.estoque_principal:
                 produtos_site.add((produto2, valor2))
-        
-        print(f'Produtos em ambos os estoques: {produtos_ambos}\nProdutos apenas na loja: {produtos_loja}\nProdutos apenas no site: {produtos_site}')
-        
 
-estoque_principal = [('Camiseta', 101), ('Calça', 102), ('Boné', 103), ('Tênis', 104)]
-estoque_online = [('Boné', 103), ('Camisa Polo', 105), ('Calça', 102), ('Chinelo', 106)]
+        print(
+            f"Produtos em ambos os estoques: {produtos_ambos}\nProdutos apenas na loja: {produtos_loja}\nProdutos apenas no site: {produtos_site}"
+        )
+
+
+estoque_principal = [("Camiseta", 101), ("Calça", 102), ("Boné", 103), ("Tênis", 104)]
+estoque_online = [("Boné", 103), ("Camisa Polo", 105), ("Calça", 102), ("Chinelo", 106)]
 
 rodar = Estoque(estoque_principal, estoque_online)
 

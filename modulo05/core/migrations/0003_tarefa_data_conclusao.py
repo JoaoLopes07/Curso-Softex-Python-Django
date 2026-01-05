@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_tarefa_prazo_tarefa_prioridade_alter_tarefa_user'),
+        ("core", "0002_tarefa_prazo_tarefa_prioridade_alter_tarefa_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tarefa',
-            name='data_conclusao',
-            field=models.DateField(blank=True, null=True, verbose_name='Data de Conclusão'),
+            model_name="tarefa",
+            name="data_conclusao",
+            field=models.DateField(
+                blank=True, null=True, verbose_name="Data de Conclusão"
+            ),
         ),
     ]

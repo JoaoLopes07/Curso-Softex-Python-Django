@@ -1,10 +1,10 @@
-class Livro():
+class Livro:
     def __init__(self, titulo, autor):
         self.titulo = titulo
         self.autor = autor
 
 
-class Biblioteca():
+class Biblioteca:
     def __init__(self):
         self.acervo = []
 

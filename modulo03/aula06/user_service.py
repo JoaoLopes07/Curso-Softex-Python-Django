@@ -15,7 +15,7 @@ class UserService:
         if user is None:
             return None
         user_dict = dict(user)
-        user_dict.pop('senha_hash', None)
+        user_dict.pop("senha_hash", None)
         return user_dict
         """
         este é um método privado que recebe um usuarios do banco.
@@ -30,11 +30,11 @@ class UserService:
         target_user_id: int,
         action: str,
     ) -> bool:
-        if current_user_profile == 'Diretoria':
+        if current_user_profile == "Diretoria":
             return True
         if target_user_id is None:
             return False
-        if action == 'edit_self':
+        if action == "edit_self":
             return current_user_id == target_user_id
         return False
         """
@@ -51,18 +51,21 @@ class UserService:
         nome_completo: str,
         perfil: str = "Afiliado",
     ) -> tuple[bool, str]:
-        if len(senha) <8:
-            return False, 'A senha precisa ter no mínimo 8 caraceres'
-        if len(email) <10 and '@' not in email and not email.endswith('.com'):
-            return False, 'O email precisa ter no mínimo 10 caracteres, ter @ e terminar com (.com)'
+        if len(senha) < 8:
+            return False, "A senha precisa ter no mínimo 8 caraceres"
+        if len(email) < 10 and "@" not in email and not email.endswith(".com"):
+            return (
+                False,
+                "O email precisa ter no mínimo 10 caracteres, ter @ e terminar com (.com)",
+            )
         if nome_completo is None:
-            return False, 'O nome não pode estar vazio'
-        if not nome_completo.replace(' ', '').isalpha():
-            return False, 'O nome precisa conter apenas letras'
-        
+            return False, "O nome não pode estar vazio"
+        if not nome_completo.replace(" ", "").isalpha():
+            return False, "O nome precisa conter apenas letras"
+
         senha_hash = hash_senha(senha)
         return self.user_model.create_user(senha_hash, email, nome_completo, perfil)
-  
+
         """
         Método para criar um usuários.
         o campo senha deve ter no mínimo 8 caracteres, caso contrário retorne False a mensagem de erro.
@@ -73,14 +76,13 @@ class UserService:
 
     def login_user(self, email: str, senha: str) -> tuple[dict | None, str]:
         if email or senha is None:
-            return False, 'Email ou senha não pode estar vazio'
+            return False, "Email ou senha não pode estar vazio"
         user = self.user_model.find_user_by_email(email)
-        if user and verificar_senha(senha, user['senha_hash']):
+        if user and verificar_senha(senha, user["senha_hash"]):
             safe_user = self._safe_user_data(user)
-            return safe_user, 'Login bem sucedido'
-        return None, 'Login não sucedido'
+            return safe_user, "Login bem sucedido"
+        return None, "Login não sucedido"
 
-        
         """
         Este método é o login do usuários, deve receber um email e senha não vazios
         Use o método do find_user_by_email para buscar o usuario

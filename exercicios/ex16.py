@@ -1,4 +1,4 @@
-class Senha():
+class Senha:
     def verificar(self, senha):
         maiuscula = False
         minuscula = False
@@ -17,18 +17,20 @@ class Senha():
                 simbolo = True
             cont += 1
 
-        if len(senha) >=8 and maiuscula and minuscula and numero and simbolo:
+        if len(senha) >= 8 and maiuscula and minuscula and numero and simbolo:
             return True
 
         else:
-            print('A Senha precisa ter:\n8 caracteres\n1 letra maiúscula\n1 letra minúscula\n1 número\n1 simbolo')
+            print(
+                "A Senha precisa ter:\n8 caracteres\n1 letra maiúscula\n1 letra minúscula\n1 número\n1 simbolo"
+            )
             return False
+
 
 rodar = Senha()
 
 while True:
-    senha = input('Digite uma senha: ')
+    senha = input("Digite uma senha: ")
     if rodar.verificar(senha):
-        print('Senha Válida')
+        print("Senha Válida")
         break
-

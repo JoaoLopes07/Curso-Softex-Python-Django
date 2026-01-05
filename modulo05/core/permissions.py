@@ -1,63 +1,21 @@
-from django.db import models
-from django.contrib.auth.models import User
-
-# Create your models here.
+from rest_framework.permissions import BasePermission
 
 
-class Tarefa(models.Model):
+class PodeDeletarTarefa(BasePermission):
+    """
+    Permite deletar tarefa apenas para usuários
+    com a permissão 'pode_deletar_tarefa'
+    """
 
-    PRIORIDADE_CHOICES = [
-    ('baixa', 'Baixa'),
-    ('media', 'Média'),
-    ('alta', 'Alta'),
-]
+    def has_permission(self, request, view):
+        return request.user.has_perm("core.pode_deletar_tarefa")
 
-    prioridade = models.CharField(
-        max_length=10,
-        choices=PRIORIDADE_CHOICES,
-        default='media',
-        verbose_name='Prioridade'
-    )
 
-    
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='tarefas',  # Permite user.tarefas.all()
-        verbose_name='Usuário'
-    )
-    # CharField: Campo de texto com limite
-    titulo = models.CharField(
-        max_length=200,
-        verbose_name='Título'
-    )
+class PodeEditarTarefa(BasePermission):
+    """
+    Permite edição completa (PUT) apenas
+    para usuários com permissão específica.
+    """
 
-    concluida = models.BooleanField(
-        default=False,
-        verbose_name='Concluída'
-    )
-
-    criada_em = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Criada em'
-    )
-
-    prazo = models.DateField(
-        null=True,
-        blank=True,
-        verbose_name='Prazo'
-    )
-    
-    data_conclusao = models.DateField(
-        null=True, 
-        blank=True,
-        verbose_name= 'Data de Conclusão'
-    )
-
-    class Meta:
-        verbose_name = 'Tarefa'
-        verbose_name_plural = 'Tarefas'
-        ordering = ['-criada_em']  # Mais recentes primeiro
-
-        def __str__(self):
-            return f"{self.titulo} ({'✓' if self.concluida else '✗'})"
+    def has_permission(self, request, view):
+        return request.user.has_perm("core.pode_editar_tarefa")
